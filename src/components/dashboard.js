@@ -1,11 +1,21 @@
 AFRAME.registerComponent('dashboard', {
   init: function () {
+    // Asset setup
+    if (!document.querySelector('#a-dashboard')) {
+      const assets = document.querySelector('a-assets')
+      const img = document.createElement('img')
+      assets.appendChild(img)
+      img.src = 'https://aelatgt.net/air-quality-dashboard'
+      img.id = 'a-dashboard'
+      img.crossOrigin = 'anonymous'
+    }
+
     // Placeholder for auto scaling
     this.el.setAttribute('geometry', null)
     this.el.setAttribute('material', { visible: false })
 
     this.el.setAttribute('material', {
-      src: 'https://aelatgt.net/air-quality-dashboard',
+      src: '#a-dashboard',
       shader: 'flat',
       side: 'double',
     })
